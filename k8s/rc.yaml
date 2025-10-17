@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: javawebpprc
+  namespace: prod
+  labels:
+    name: rcprod
+spec:
+  replicas: 8
+  selector:
+    app: javawebapp
+  template:
+    metadata:
+      name: javawebapppod
+      labels:
+        app: javawebapp
+    spec:
+      containers:
+      - name: javawebconn
+        image: kkeducationb2/java-webapp:1.1
+        ports:
+        - containerPort: 8080
